@@ -21,7 +21,7 @@ All notable changes to this project will be documented in this file. See [standa
 ## 3.0.4
 
 ### Bug Fixes
-* Take CSP style nonce as props, pass to react-virtualized AutoSizer ([5476ff6](https://github.com/nosferatu500/react-sortable-tree/commit/5476ff60b7ba2b5198af76f8656ee40679d53303))
+* Take CSP style nonce as props, pass to react-virtualized AutoSizer ([5476ff6](https://github.com/mrbarada/react-sortable-tree/commit/5476ff60b7ba2b5198af76f8656ee40679d53303))
 
 * Bump deps
 
