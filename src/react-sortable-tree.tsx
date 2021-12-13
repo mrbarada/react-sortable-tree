@@ -188,7 +188,7 @@ class ReactSortableTree extends Component {
 
     const { dndType, nodeContentRenderer, treeNodeRenderer, slideRegionSize } =
       mergeTheme(props)
-
+    this.isDynamicRowHeight = this.props.isDynamicRowHeight;
     // Wrapping classes for use with react-dnd
     this.treeId = `rst__${treeIdCounter}`
     treeIdCounter += 1
@@ -693,6 +693,10 @@ class ReactSortableTree extends Component {
     } else {
       containerStyle = { height: '100%', ...containerStyle }
 
+      const listClassName = this.isDynamicRowHeight
+        ? 'rst__dynamicRowHeight'
+        : 'rst__virtualScrollOverride'
+
       const ScrollZoneVirtualList = this.scrollZoneVirtualList
       // Render list with react-virtuoso
       list = (
@@ -701,7 +705,7 @@ class ReactSortableTree extends Component {
           dragDropManager={dragDropManager}
           verticalStrength={this.vStrength}
           horizontalStrength={this.hStrength}
-          className="rst__virtualScrollOverride"
+          className={listClassName}
           style={innerStyle}
           itemContent={(index) =>
             this.renderRow(rows[index], {
@@ -802,6 +806,9 @@ export type ReactSortableTreeProps = {
 
   // Style applied to the container wrapping the tree (style defaults to {height: '100%'})
   style?: any
+
+  // Style list elements height auto
+  isDynamicRowHeight?: boolean
 
   // Class name for the container wrapping the tree
   className?: string
@@ -909,6 +916,7 @@ ReactSortableTree.defaultProps = {
   canDrag: true,
   canDrop: undefined,
   canNodeHaveChildren: () => true,
+  isDynamicRowHeight: false,
   className: '',
   dndType: undefined,
   generateNodeProps: undefined,
