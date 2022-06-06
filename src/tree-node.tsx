@@ -76,7 +76,7 @@ const TreeNode: React.FC<TreeRendererProps> = (props) => {
   // Construct the scaffold representing the structure of the tree
   const scaffoldBlockCount = lowerSiblingCounts.length
   const scaffold: any[] = []
-  for (const [i, lowerSiblingCount] of lowerSiblingCounts.entries()) {
+  for (const [i, lowerSiblingCount] of Array.from(lowerSiblingCounts.entries())) {
     let lineClass = ''
     if (lowerSiblingCount > 0) {
       // At this level in the tree, the nodes had sibling nodes further down
